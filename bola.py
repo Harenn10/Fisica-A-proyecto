@@ -1,5 +1,5 @@
 import pygame
-from fisicas import actualizar_posicion, rebotar_paredes
+from fisicas import actualizar_posicion, rebotar_paredes, aplicar_fricciones
 
 class Bola:
 
@@ -39,4 +39,11 @@ class Bola:
             self.radio,
             ancho,
             alto
+        )
+        
+    def frenar(self, dt):
+        self.vx, self.vy = aplicar_fricciones(
+            self.vx,
+            self.vy,
+            dt
         )

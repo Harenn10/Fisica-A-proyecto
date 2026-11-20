@@ -26,8 +26,11 @@ while ejecutando:
         if evento.type == pygame.QUIT:
             ejecutando = False
 
+    bola_blanca.frenar(dt)
     bola_blanca.mover(dt)
-    bola_blanca.rebotar(ancho, alto)
+    bola_blanca.rebotar(ancho, alto) #FISICAS
+    
+    
     pantalla.fill(verde)
     bola_blanca.dibujar(pantalla)
 

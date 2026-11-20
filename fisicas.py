@@ -1,3 +1,5 @@
+import math 
+
 def actualizar_posicion(x, y, vx, vy, dt):
     nueva_x = x + vx * dt
     nueva_y = y + vy * dt
@@ -28,3 +30,23 @@ def rebotar_paredes(x, y, vx, vy, radio, ancho, alto):
         vy = abs(vy) * e
 
     return x, y, vx, vy
+
+def aplicar_fricciones(vx, vy, dt):
+    
+    mu = 0.08
+    g = 981 #error aca
+    
+    velocidad = math.sqrt(vx**2 + vy**2)
+    if velocidad == 0:
+        return 0, 0
+    
+    desacelaricion = mu * g
+    nueva_velocidad = max(0, velocidad - desacelaricion * dt)
+    
+    factor = nueva_velocidad/ velocidad
+    
+    vx = vx*factor
+    vy = vy*factor
+    
+    return vx, vy
+    
