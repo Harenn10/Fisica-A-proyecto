@@ -1,5 +1,5 @@
 import pygame
-from fisicas import actualizar_posicion, rebotar_paredes, aplicar_fricciones
+from fisicas import actualizar_posicion, rebotar_paredes, aplicar_fricciones, colision_bolas
 
 class Bola:
 
@@ -46,4 +46,11 @@ class Bola:
             self.vx,
             self.vy,
             dt
+        )
+        
+    def chocar_con(self, otra_bola, restitucion=1.0):
+        return colision_bolas(
+            self,
+            otra_bola,
+            restitucion
         )
