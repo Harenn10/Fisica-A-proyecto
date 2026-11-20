@@ -50,3 +50,43 @@ def aplicar_fricciones(vx, vy, dt):
     
     return vx, vy
     
+    
+def colision_bolas(bola1, bola2, restitucion = 1.0):
+    dx = bola2.x - bola1.x
+    dy = bola2.y - bola1.y
+    
+    distancia = (dx**2 + dy**2)**0.5 #####3
+    radio_total =bola1.radio + bola2.radio
+    
+    if distancia > radio_total: #Estan chocando??
+        return False 
+    
+    if distancia == 0:
+        nx = 1.0
+        ny = 0.0
+    else:
+        nx = dx/distancia
+        ny = dy/distancia
+        
+    solapamiento = radio_total - distancia #Separarlas
+    
+    bola1.x -= nx *solapamiento/2
+    bola1.y -= ny*solapamiento/2
+    bola2.x -= nx *solapamiento/2
+    bola2.y -= ny*solapamiento/2
+    
+    velocidad_relativa = (
+        (bola2.vx-bola1.vx)*nx-(bola2.vy-bola1.vy)*ny #direccion
+    )
+    
+    if velocidad_relativa>=0:
+        return True #si se separan no se aplica el impulso
+    
+    impulso = -(1 + restitucion) * velocidad_relativa / 2
+
+    bola1.vx -= impulso * nx
+    bola1.vy -= impulso * ny
+    bola2.vx += impulso * nx
+    bola2.vy += impulso * ny
+
+    return True
