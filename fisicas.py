@@ -5,28 +5,26 @@ def actualizar_posicion(x, y, vx, vy, dt):
     nueva_y = y + vy * dt
     return nueva_x, nueva_y
 
-def rebotar_paredes(x, y, vx, vy, radio, ancho, alto):
-
-    e = 1.0  # Coeficiente de restitución
-
+def rebotar_paredes( x, y, vx, vy, radio, ancho, alto, margen=0):
+    e = 1.0
     # Pared derecha
-    if x + radio >= ancho:
-        x = ancho - radio
+    if x + radio >= ancho - margen:
+        x = ancho - margen - radio
         vx = -abs(vx) * e
 
     # Pared izquierda
-    elif x - radio <= 0:
-        x = radio
+    elif x - radio <= margen:
+        x = margen + radio
         vx = abs(vx) * e
 
     # Pared inferior
-    if y + radio >= alto:
-        y = alto - radio
+    if y + radio >= alto - margen:
+        y = alto - margen - radio
         vy = -abs(vy) * e
 
     # Pared superior
-    elif y - radio <= 0:
-        y = radio
+    elif y - radio <= margen:
+        y = margen + radio
         vy = abs(vy) * e
 
     return x, y, vx, vy

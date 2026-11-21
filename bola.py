@@ -29,8 +29,7 @@ class Bola:
             (int(self.x), int(self.y)),
             self.radio
         )
-    def rebotar(self, ancho, alto):
-
+    def rebotar(self, ancho, alto, margen=0):
         self.x, self.y, self.vx, self.vy = rebotar_paredes(
             self.x,
             self.y,
@@ -38,7 +37,8 @@ class Bola:
             self.vy,
             self.radio,
             ancho,
-            alto
+            alto,
+            margen
         )
         
     def frenar(self, dt):
