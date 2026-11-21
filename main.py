@@ -61,7 +61,7 @@ while ejecutando:
     ##FISICAS
     
     mesa.dibujar(pantalla)
-    mouse_x, mouse_y = pygame.mouse.get_pos()    #Linea de apuntado=
+    mouse_x, mouse_y = pygame.mouse.get_pos()    #Linea de apuntado
     pygame.draw.line(pantalla, (255, 255, 255), (int(bola_blanca.x), int(bola_blanca.y)),
         (mouse_x, mouse_y), 2)
     bola_blanca.dibujar(pantalla)
