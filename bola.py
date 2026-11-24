@@ -40,14 +40,12 @@ class Bola:
             alto,
             margen
         )
-        
     def frenar(self, dt):
         self.vx, self.vy = aplicar_fricciones(
             self.vx,
             self.vy,
             dt
         )
-        
     def chocar_con(self, otra_bola, restitucion=1.0):
         return colision_bolas(
             self,

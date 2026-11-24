@@ -1,6 +1,7 @@
 import pygame
 
 class Tabla:
+
     def __init__(self):
 
         self.izquierda = 60
@@ -43,3 +44,12 @@ class Tabla:
                 (x, y),
                 25
             )
+
+    def bola_embocada(self, bola):
+        for x, y in self.troneras:
+            dx = bola.x - x
+            dy = bola.y - y
+            distancia = (dx**2 + dy**2)**0.5
+            if distancia < 22:
+                return True #si la distancia es menor que 22 pixeles entra
+        return False
