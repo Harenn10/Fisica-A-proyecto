@@ -91,7 +91,7 @@ def colision_bolas(bola1, bola2, restitucion=1.0):
 
     if distancia == 0:
         nx = 1.0
-        ny = 0.0
+        ny = 0.0 #distanica/0 generararia errores
     else:
         nx = dx / distancia
         ny = dy / distancia
